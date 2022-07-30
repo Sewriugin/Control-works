@@ -1,6 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Hello, World!");
-
 // Задача: Написать программу, которая из имеющегося массива строк формирует
 // массив из строк, длина которых меньше или равна 3 символа. Первоначальный 
 // массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма.
@@ -11,45 +8,37 @@
 // ["1234", "1567", "-2", "computer science"] => ["-2"]
 // ["Russia", "Denmark", "Kazan"] => []
 
-// метод, который принимает на вход аргументы: первоначальный массив и новый массив, для его формирования
-void stringArrayInNewArray(string[] stringArray, string[] newStringArray)
+// метод, который принимает на вход аргументы: первоначальный массив и количества символов для вывода
+void stringArrayInNewArray(string[] stringArray, int n)
 {
     for (int i = 0; i < stringArray.Length; i++) // вывод в консоль первоначального массива
     {
-        Console.Write(" " + stringArray[i] + " ");
+        Console.Write(stringArray[i] + " ");
     }
     Console.Write(" => ");
-
-    if (newStringArray.Length == 0) // условие, при котором выводится 0 значение (массив 0 размера)
+        
+    string tempStr; // перменная для присваивания элемента массива строки
+    char[] tempChars; // переменная для присваивания символов из массива строки (знаков)
+    for (int i = 0; i < stringArray.Length; i++) // формирование нового массива и вывод его в консоль
     {
-        Console.WriteLine("[]");
-    }
-    else
-    if (newStringArray.Length <= newStringArray.Length) // условие для формирования нового массива с учётом его длины
-    {
-        int temp = 0; // перменная для последующей записи данных в новый массив
-        for (int i = 0; i < stringArray.Length && i < newStringArray.Length; i++) // формирование нового массива
+        tempStr = stringArray[i]; // присваивание i элемента
+        tempChars = tempStr.ToCharArray(); // присваивание знаков элемента
+        if (tempChars.Length <= n) // условие сравнения количества знаков в элементе строки
         {
-            temp = new Random().Next(0, stringArray.Length); // присваивание значений из из первоначального массива и 
-            newStringArray[i] = stringArray[temp];           // их запись в новый массив
-            Console.Write(" " + newStringArray[i] + " ");   // ввывод нового массива в консоль
-        }
-        Console.WriteLine();
+        Console.Write(stringArray[i] + " "); // вывод в консоль
+        }    
     }
+    Console.WriteLine();
 }
 
-// Примеры
-Console.Write("1 пример: ");
-string[] stringArray1 = new String[] {"hello", "2", "world", ":-)"}; // первоначальный массив
-string[] newStringArray1 = new String[2]; // новый массив
-stringArrayInNewArray(stringArray1, newStringArray1); // вызов метода
-
-Console.Write("2 пример: ");
-string[] stringArray2 = new String[] {"1234", "1567", "-2", "computer science"}; // первоначальный массив
-string[] newStringArray2 = new String[1]; // новый массив
-stringArrayInNewArray(stringArray2, newStringArray2); // вызов метода
-
-Console.Write("3 пример: ");
-string[] stringArray3 = new String[] {"Russia", "Denmark", "Kazan"}; // первоначальный массив
-string[] newStringArray3 = new String[0]; // новый массив
-stringArrayInNewArray(stringArray3, newStringArray3); // вызов метода
+    // Примеры
+    Console.Write("1 пример: ");
+    string[] stringArray1 = new String[] {"hello", "2", "world", ":-)"};
+    stringArrayInNewArray(stringArray1, 3); // вызов метода с указанием аргументов: массива и количества символов 
+    Console.Write("2 пример: ");
+    string[] stringArray2 = new String[] {"1234", "1567", "-2", "computer science"};
+    stringArrayInNewArray(stringArray2, 3); // вызов метода с указанием аргументов: массива и количества символов
+    Console.Write("3 пример: ");
+    string[] stringArray3 = new String[] {"Russia", "Denmark", "Kazan"};
+    stringArrayInNewArray(stringArray3, 3); // вызов метода с указанием аргументов: массива и количества символов
+    
